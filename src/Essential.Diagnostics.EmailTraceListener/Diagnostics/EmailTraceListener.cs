@@ -400,7 +400,7 @@ Data:
 			}
 			else
 			{
-				Debug.WriteLine("Dropped message due to flood protection.");
+				//Debug.WriteLine("Dropped message due to flood protection.");//otherwise in Debug build, stack overflow.
 			}
 		}
 
