@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Xunit;
 using Essential.Diagnostics;
 //using Rnwood.SmtpServer;
 using System.Diagnostics;
@@ -17,9 +17,6 @@ using System.Diagnostics;
 
 namespace Essential.Diagnostics.IntegrationTests
 {
-    [Explicit("Email integration - requires email server")]
-    [TestFixture]
-    [Description("Test with a local SMTP server that may handle domain example.com.")]
     public class EmailTraceListenersTests
     {
         public EmailTraceListenersTests()
@@ -118,8 +115,8 @@ namespace Essential.Diagnostics.IntegrationTests
        // }
 
 
-        [Test]
-        [Description("EmailTraceListener defined in config should be working and sending Email messages out.")]
+        [Fact]
+      //  [Description("EmailTraceListener defined in config should be working and sending Email messages out.")]
         public void TestEmailTraceListener()
         {
             Trace.TraceWarning("Anything. More detail go here.");
@@ -130,8 +127,8 @@ namespace Essential.Diagnostics.IntegrationTests
             System.Threading.Thread.Sleep(5000);//need to wait, otherwise the test host is terminated resulting in thread abort.
         }
 
-        [Test]
-        [Description("Expect an error trace.")]
+        [Fact]
+       // [Description("Expect an error trace.")]
         public void TestAnErrorBufferTraceListenerWithoutDefinedIn()
         {
             Trace.TraceWarning("Anything. More detail go here.");
@@ -139,7 +136,7 @@ namespace Essential.Diagnostics.IntegrationTests
             Trace.WriteLine("This is writeline.", "Category");
             Trace.WriteLine("This is another writeline.", "caTegory");
             Trace.WriteLine("Writeline without right category", "CCCC");
-            BufferedEmailTraceListener.SendAll();
+          //  BufferedEmailTraceListener.SendAll();
             System.Threading.Thread.Sleep(5000);
         }
 
